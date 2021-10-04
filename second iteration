@@ -1,0 +1,33 @@
+from numpy import *
+import sys
+print('the array A = axb and a=b ')
+a = int(input('a = '))
+b = a
+n = a * b
+A = arange(1,n+1).reshape(a,b)
+B = arange(1,a+1).reshape(a,1)
+
+
+#for A
+for i in range(0,a):
+    S1 = input(f'inter the row number{i+1} ')
+    S2 = S1.split()
+    for j in range(0,b):
+        A[i,j] = float(S2[j])
+if linalg.det(A) == 0:
+    print('error')
+    sys.exit()
+print(A)
+
+
+#for B
+print('the array B ')
+R1 = input(f'inter the values of B ')
+R2 = R1.split()
+for i in range(0,a):
+    B[i] = float(R2[i])
+print(B)
+
+#for X
+X = matmul(linalg.inv(A),B)
+print(f'X = {X}')
