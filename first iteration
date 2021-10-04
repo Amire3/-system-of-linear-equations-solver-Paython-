@@ -1,0 +1,26 @@
+from numpy import *
+import sys
+
+print('the array A = axb')
+a = int(input('a = '))
+b = int(input('b = '))
+#a = 2
+#b = 2
+n = a * b
+A = arange(1,n+1).reshape(a,b)
+#for A
+for i in range(0,a):
+    for j in range(0,b):
+        A[i,j] = float(input(f'A[{i+1},{j+1}] = '))
+if linalg.det(A) == 0 :
+    print('error')
+    sys.exit()
+print(A)
+#for B
+print('the array B')
+B = arange(1,a+1).reshape(a,1)
+for i in range(0,a):
+    B[i,0] = float(input(f'B[{i+1},1] = '))
+print(B)
+X = matmul(linalg.inv(A),B)
+print(X)
